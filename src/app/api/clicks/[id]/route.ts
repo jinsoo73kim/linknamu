@@ -6,15 +6,20 @@ export async function POST(
 ) {
   const { id } = await params;
 
-  const client = await getMongoClient();
-  const result = await client
-    .db(CLICKS_DB)
-    .collection<{ linkId: string; count: number }>(CLICKS_COLLECTION)
-    .findOneAndUpdate(
-      { linkId: id },
-      { $inc: { count: 1 } },
-      { upsert: true, returnDocument: "after" }
-    );
+  try {
+    const client = await getMongoClient();
+    const result = await client
+      .db(CLICKS_DB)
+      .collection<{ linkId: string; count: number }>(CLICKS_COLLECTION)
+      .findOneAndUpdate(
+        { linkId: id },
+        { $inc: { count: 1 } },
+        { upsert: true, returnDocument: "after" }
+      );
 
-  return Response.json({ count: result?.count ?? 1 });
+    return Response.json({ count: result?.count ?? 1 });
+  } catch (error) {
+    // TEMPORARY: surface the real error for debugging a production 500.
+    return Response.json({ debugError: String(error) }, { status: 500 });
+  }
 }
