@@ -17,6 +17,7 @@ export async function GET() {
     return Response.json(counts);
   } catch (error) {
     // TEMPORARY: surface the real error for debugging a production 500.
-    return Response.json({ debugError: String(error) }, { status: 500 });
+    const mongoKeys = Object.keys(process.env).filter((k) => k.toUpperCase().includes("MONGO"));
+    return Response.json({ debugError: String(error), mongoKeys }, { status: 500 });
   }
 }
