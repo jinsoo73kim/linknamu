@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 링크나무 (Linknamu)
 
-## Getting Started
+내 모든 링크를 한 페이지에 모아두고, 하나의 URL로 공유할 수 있는 Link in Bio 서비스입니다.
 
-First, run the development server:
+SNS에 여러 링크를 공유하고 싶은 개인 창작자, 개발자, 프리랜서를 위한 서비스예요.
+
+## 주요 기능
+
+- 프로필 표시 (이름, 한 줄 소개, 프로필 사진)
+- 링크 카드 목록 (SNS · 블로그 링크를 카드 형태로 나열)
+- 다크모드 토글
+- 링크 클릭 수 집계
+
+## 기술 스택
+
+- [Next.js 16](https://nextjs.org) (App Router)
+- Tailwind CSS
+- MongoDB Atlas (클릭 수 저장)
+- Vercel (배포)
+
+## 시작하기
+
+먼저 개발 서버를 실행하세요:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+브라우저에서 [http://localhost:3000](http://localhost:3000) 을 열어 결과를 확인할 수 있습니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`src/app/page.tsx` 파일을 수정하면 페이지가 자동으로 갱신됩니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 코드 규칙
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- TypeScript 사용
+- 컴포넌트는 `src/components/` 아래에 작성
+- 환경 변수는 `.env.local`에 저장 (절대 커밋하지 않음)
+- 모바일 우선 반응형 디자인
