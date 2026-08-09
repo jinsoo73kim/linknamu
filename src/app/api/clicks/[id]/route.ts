@@ -1,4 +1,4 @@
-import clientPromise, { CLICKS_DB, CLICKS_COLLECTION } from "@/lib/mongodb";
+import getMongoClient, { CLICKS_DB, CLICKS_COLLECTION } from "@/lib/mongodb";
 
 export async function POST(
   _request: Request,
@@ -6,7 +6,7 @@ export async function POST(
 ) {
   const { id } = await params;
 
-  const client = await clientPromise;
+  const client = await getMongoClient();
   const result = await client
     .db(CLICKS_DB)
     .collection<{ linkId: string; count: number }>(CLICKS_COLLECTION)
